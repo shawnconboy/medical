@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reviews — MedTrackⓇ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>American Labs</h1>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="status.html">See Status Reports</a>
+                <a href="appointment.html">Request Appointment</a>
+                <a href="faq.html">FAQ</a>
+                <a href="reviews.html" class="active">Leave a Review</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Customer Reviews</h2>
+            <p>Share your experience with American Labs.</p>
+
+            <form id="review-form" class="card">
+                <label for="review-name">Name</label>
+                <input id="review-name" required>
+
+                <label for="review-rating">Rating</label>
+                <select id="review-rating">
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Good</option>
+                    <option value="3">3 - Okay</option>
+                    <option value="2">2 - Poor</option>
+                    <option value="1">1 - Terrible</option>
+                </select>
+
+                <label for="review-text">Review</label>
+                <textarea id="review-text" rows="4" required></textarea>
+
+                <button type="submit" class="btn">Submit Review</button>
+            </form>
+
+            <div class="reviews-summary card">
+                <div>
+                    <strong>Overall</strong>
+                    <div id="avg-rating" class="muted">No ratings yet</div>
+                </div>
+                <div style="margin-left:auto">
+                    <div class="stars" id="interactive-stars" aria-hidden="true">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                    <button id="export-reviews" class="btn outline" style="margin-left:16px">Export Reviews CSV</button>
+                    <small class="muted">Download all reviews as CSV for your report.</small>
+                </div>
+            </div>
+
+            <div id="reviews-list" class="card"></div>
+            <div class="reviews-pager" id="reviews-pager" style="display:none"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>© <span id="year"></span> American Labs. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Check Status — MedTrackⓇ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>American Labs</h1>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="status.html" class="active">See Status Reports</a>
+                <a href="appointment.html">Request Appointment</a>
+                <a href="faq.html">FAQ</a>
+                <a href="reviews.html">Leave a Review</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2 style="margin-bottom:20px;">Check Your Test Status</h2>
+            <p style="margin-bottom:18px;">Enter your Order ID or Barcode number to see the current status of your
+                sample. Demo orders are always available for presentation.</p>
+
+            <form id="status-form" class="card" style="margin-bottom:20px;padding:24px;">
+                <label for="orderId" style="margin-bottom:10px;">Order / Barcode number</label>
+                <input id="orderId" name="orderId" placeholder="e.g. ORD-1001 or 1234567890" required
+                    style="margin-bottom:16px;">
+                <button type="submit" class="btn" style="margin-top:10px;">Lookup Status</button>
+            </form>
+
+            <div class="card" style="padding:24px;overflow:auto">
+                <h3 style="margin-top:0;margin-bottom:12px;">Orders</h3>
+                <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
+                    <input id="orders-search" placeholder="Search by Order ID or Client"
+                        style="flex:1;padding:8px;border-radius:6px;border:1px solid #e6e9ee">
+                    <button id="clear-search" class="btn outline">Clear</button>
+                </div>
+                <table class="data-table" id="demo-orders-table" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-key="id" style="width:16%;text-align:left">Order ID</th>
+                            <th class="sortable" data-key="patient" style="width:30%;text-align:left">Client</th>
+                            <th class="sortable" data-key="test" style="width:22%;text-align:left">Test</th>
+                            <th class="sortable" data-key="stage" style="width:16%;text-align:left">Stage</th>
+                            <th class="sortable" data-key="detail" style="width:16%;text-align:left">Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="demo-orders-tbody">
+                        <!-- rows rendered by script.js for presentation-ready data -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card"
+                style="margin-bottom:20px;padding:24px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+                <button id="export-orders" class="btn outline" style="margin-bottom:8px;">Export Orders CSV</button>
+                <small class="muted">Download all demo orders as CSV for your report.</small>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>© <span id="year"></span> American Labs. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

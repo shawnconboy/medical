@@ -1,0 +1,377 @@
+:root {
+    --accent: #0b6e4f;
+    --muted: #6b7280;
+    --bg: #f7fafc;
+    --card: #ffffff;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    line-height: 1.5;
+    color: #111;
+    background: var(--bg);
+    margin: 0
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px
+}
+
+.site-header {
+    background: linear-gradient(90deg, var(--accent), #0a8f6b);
+    color: #fff;
+    padding: 18px 0
+}
+
+.site-header .container {
+    display: flex;
+    align-items: center;
+    gap: 16px
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 20px
+}
+
+.tag {
+    opacity: .9;
+    margin: 0
+}
+
+.main-nav {
+    margin-left: auto;
+    display: flex;
+    gap: 12px
+}
+
+.main-nav a {
+    color: #eafaf0;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px
+}
+
+.main-nav a.active {
+    background: rgba(255, 255, 255, 0.12)
+}
+
+.hero {
+    background: linear-gradient(180deg, rgba(10, 143, 107, 0.08), transparent);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 18px
+}
+
+h2 {
+    margin-top: 0
+}
+
+.card {
+    background: var(--card);
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+    box-shadow: 0 1px 6px rgba(16, 24, 40, 0.06)
+}
+
+.services ul {
+    columns: 2;
+    gap: 12px;
+    padding-left: 18px
+}
+
+.cta {
+    display: flex;
+    gap: 12px
+}
+
+.btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer
+}
+
+.btn.outline {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent)
+}
+
+label {
+    display: block;
+    margin-top: 8px;
+    font-weight: 600
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    border: 1px solid #e6e9ee;
+    border-radius: 6px
+}
+
+.site-footer {
+    padding: 20px 0;
+    text-align: center;
+    color: var(--muted);
+    margin-top: 28px
+}
+
+.accordion .accordion-item {
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+    border: 0;
+    background: #fff;
+    border-radius: 6px;
+    margin-top: 8px;
+    cursor: pointer
+}
+
+.accordion .panel {
+    display: none;
+    padding: 10px
+}
+
+.contact p {
+    margin: 4px 0
+}
+
+@media (max-width:700px) {
+    .services ul {
+        columns: 1
+    }
+
+    .site-header .container {
+        flex-direction: column;
+        align-items: flex-start
+    }
+
+    .main-nav {
+        margin-left: 0;
+        gap: 8px
+    }
+}
+
+/* form helpers */
+.field-error {
+    color: #b91c1c;
+    font-size: 13px;
+    margin-top: 6px
+}
+
+.field-note {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px
+}
+
+/* modal (simple overlay) */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2, 6, 23, 0.5);
+    z-index: 60
+}
+
+.modal .modal-card {
+    background: var(--card);
+    padding: 18px;
+    border-radius: 8px;
+    max-width: 520px;
+    width: 100%;
+    box-shadow: 0 6px 30px rgba(2, 6, 23, 0.4)
+}
+
+/* stars */
+.stars {
+    display: flex;
+    gap: 6px;
+    align-items: center
+}
+
+.star {
+    font-size: 22px;
+    color: #e6e6e6;
+    cursor: pointer
+}
+
+.star.selected {
+    color: gold;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2)
+}
+
+.reviews-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px
+}
+
+.reviews-pager {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px
+}
+
+.pager-btn {
+    background: #fff;
+    border: 1px solid #e6e9ee;
+    padding: 6px 8px;
+    border-radius: 6px;
+    cursor: pointer
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 13px
+}
+
+/* data table styles */
+.data-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.data-table thead th {
+    background: linear-gradient(180deg, rgba(11, 110, 79, 0.06), transparent);
+    padding: 12px;
+    border-bottom: 1px solid rgba(16, 24, 40, 0.06);
+    text-align: left;
+    font-weight: 600;
+    color: #0b6e4f;
+}
+
+.data-table tbody td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(16, 24, 40, 0.04);
+    vertical-align: middle;
+    color: #111827;
+}
+
+.data-table tbody tr:hover {
+    background: #f6fffa
+}
+
+.mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+    color: #065f46
+}
+
+/* modern buttons */
+.btn {
+    transition: transform .06s ease, box-shadow .06s ease
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(11, 110, 79, 0.08)
+}
+
+.btn.outline {
+    background: transparent;
+    border: 1px solid rgba(11, 110, 79, 0.14);
+    color: var(--accent)
+}
+
+/* sortable headers */
+.data-table thead th.sortable {
+    cursor: pointer;
+    position: relative;
+}
+
+.data-table thead th.sortable::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.data-table thead th.sortable.sort-asc::after {
+    content: '▲';
+}
+
+.data-table thead th.sortable.sort-desc::after {
+    content: '▼';
+}
+
+/* stage chips */
+.chip {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 13px;
+    border: 1px solid transparent
+}
+
+.chip.processing {
+    background: rgba(253, 230, 138, 0.35);
+    color: #92400e;
+    border-color: rgba(253, 230, 138, 0.6)
+}
+
+.chip.completed {
+    background: rgba(187, 247, 208, 0.35);
+    color: #065f46;
+    border-color: rgba(187, 247, 208, 0.6)
+}
+
+.chip.received {
+    background: rgba(191, 219, 254, 0.35);
+    color: #075985;
+    border-color: rgba(191, 219, 254, 0.6)
+}
+
+.chip.awaiting-pickup {
+    background: rgba(254, 202, 202, 0.35);
+    color: #7f1d1d;
+    border-color: rgba(254, 202, 202, 0.6)
+}
+
+.chip.in-queue {
+    background: rgba(243, 244, 246, 0.6);
+    color: #374151;
+    border-color: rgba(243, 244, 246, 0.9)
+}
+
+.chip.pending {
+    background: rgba(255, 249, 230, 0.6);
+    color: #92400e;
+    border-color: rgba(255, 249, 230, 0.9)
+}
+
+.chip.default {
+    background: rgba(243, 244, 246, 0.6);
+    color: #374151;
+    border-color: rgba(243, 244, 246, 0.9)
+}
+
+/* search input slight style */
+#orders-search {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e6e9ee
+}
