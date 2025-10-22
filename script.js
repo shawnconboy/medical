@@ -23,7 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const defaultAppts = [
         { id: 'APPT-1001', name: 'Jamie Mosley', email: 'jamie@clinic.com', phone: '555-1111', clinic: 'Acme Clinic', date: '2025-10-25', notes: 'Routine blood draw', created: '2025-10-20T09:00:00Z' },
         { id: 'APPT-1002', name: 'Mark Barron', email: 'mark@northside.com', phone: '555-2222', clinic: 'Northside Clinic', date: '2025-10-26', notes: 'Lipid panel', created: '2025-10-21T10:00:00Z' },
-        { id: 'APPT-1003', name: 'Elisabeth Elmore', email: 'elisabeth@central.com', phone: '555-3333', clinic: 'Central Hospital', date: '2025-10-27', notes: 'Hemoglobin A1c', created: '2025-10-22T11:00:00Z' }
+        { id: 'APPT-1003', name: 'Elisabeth Elmore', email: 'elisabeth@central.com', phone: '555-3333', clinic: 'Central Hospital', date: '2025-10-27', notes: 'Hemoglobin A1c', created: '2025-10-22T11:00:00Z' },
+        { id: 'APPT-1004', name: 'Maria Chen', email: 'maria.chen@riverbend.org', phone: '555-4444', clinic: 'Riverbend Lab', date: '2025-10-28', notes: 'Urinalysis follow-up', created: '2025-10-22T13:00:00Z' },
+        { id: 'APPT-1005', name: 'Daniel Ortiz', email: 'dan.ortiz@lakeside.com', phone: '555-5555', clinic: 'Lakeside Practice', date: '2025-10-29', notes: 'COVID PCR', created: '2025-10-22T14:00:00Z' }
     ];
     // Demo reviews
     const defaultReviews = [
@@ -71,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const exportApptsBtn = document.getElementById('export-appts');
     if (exportApptsBtn) {
         exportApptsBtn.addEventListener('click', function () {
-            const appts = JSON.parse(localStorage.getItem('appts') || '[]');
+            const storedAppts = JSON.parse(localStorage.getItem('appts') || '[]');
+            const appts = (storedAppts && storedAppts.length) ? storedAppts : defaultAppts;
             const csv = toCSV(appts, ['id', 'name', 'email', 'phone', 'clinic', 'date', 'notes', 'created']);
             downloadCSV('appointments.csv', csv);
         });
@@ -80,7 +83,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const exportReviewsBtn = document.getElementById('export-reviews');
     if (exportReviewsBtn) {
         exportReviewsBtn.addEventListener('click', function () {
-            const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            const storedReviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            const reviews = (storedReviews && storedReviews.length) ? storedReviews : defaultReviews;
             const csv = toCSV(reviews, ['name', 'rating', 'text', 'created']);
             downloadCSV('reviews.csv', csv);
         });
@@ -271,7 +275,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Render saved appointments
     function renderAppointments() {
-        const list = JSON.parse(localStorage.getItem('appts') || '[]');
+        const stored = JSON.parse(localStorage.getItem('appts') || '[]');
+        const list = (stored && stored.length) ? stored : defaultAppts;
         const el = document.getElementById('appts-list');
         if (!el) return;
         if (list.length === 0) { el.style.display = 'none'; return }
@@ -307,7 +312,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function renderReviews(page = 1) {
-        const list = JSON.parse(localStorage.getItem('reviews') || '[]');
+        const stored = JSON.parse(localStorage.getItem('reviews') || '[]');
+        const list = (stored && stored.length) ? stored : defaultReviews;
         if (!reviewsList) return;
         if (list.length === 0) { reviewsList.innerHTML = '<p>No reviews yet — be the first to leave one!</p>'; avgRatingEl.textContent = 'No ratings yet'; reviewsPager.style.display = 'none'; return }
         const avg = computeAvg(list);
@@ -390,19 +396,30 @@ document.addEventListener('DOMContentLoaded', function () {
     renderReviews(1);
 
     // FAQ accordion
+    // make accordion keyboard accessible and allow toggling
     document.querySelectorAll('.accordion .accordion-item').forEach(btn => {
-        // make accordion keyboard accessible
         btn.setAttribute('tabindex', '0');
         btn.addEventListener('click', function () {
             const panel = this.nextElementSibling;
-            const open = panel.style.display === 'block';
-            document.querySelectorAll('.accordion .panel').forEach(p => p.style.display = 'none');
-            if (!open) panel.style.display = 'block';
+            const isOpen = panel.classList.contains('open');
+            // toggle only this panel (keep others as-is)
+            panel.classList.toggle('open', !isOpen);
         });
         btn.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
         });
     });
+
+    // Collapse/Expand All toggle
+    const accToggle = document.getElementById('accordion-toggle');
+    if (accToggle) {
+        accToggle.addEventListener('click', function () {
+            const panels = document.querySelectorAll('.accordion .panel');
+            const anyOpen = Array.from(panels).some(p => p.classList.contains('open'));
+            panels.forEach(p => p.classList.toggle('open', !anyOpen));
+            accToggle.textContent = anyOpen ? 'Expand All' : 'Collapse All';
+        });
+    }
 
     // helper
     function escapeHtml(s) {
