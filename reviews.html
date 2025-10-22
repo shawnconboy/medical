@@ -32,13 +32,22 @@
                 <input id="review-name" required>
 
                 <label for="review-rating">Rating</label>
-                <select id="review-rating">
-                    <option value="5">5 - Excellent</option>
-                    <option value="4">4 - Good</option>
-                    <option value="3">3 - Okay</option>
-                    <option value="2">2 - Poor</option>
-                    <option value="1">1 - Terrible</option>
-                </select>
+                <div style="display:flex;align-items:center;gap:12px">
+                    <select id="review-rating">
+                        <option value="5">5 - Excellent</option>
+                        <option value="4">4 - Good</option>
+                        <option value="3">3 - Okay</option>
+                        <option value="2">2 - Poor</option>
+                        <option value="1">1 - Terrible</option>
+                    </select>
+                    <div class="stars" id="interactive-stars" aria-hidden="false" title="Click to set rating">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
 
                 <label for="review-text">Review</label>
                 <textarea id="review-text" rows="4" required></textarea>
@@ -49,23 +58,16 @@
             <div class="reviews-summary card">
                 <div>
                     <strong>Overall</strong>
-                    <div id="avg-rating" class="muted">No ratings yet</div>
-                </div>
-                <div style="margin-left:auto">
-                    <div class="stars" id="interactive-stars" aria-hidden="true">
-                        <span class="star" data-value="1">★</span>
-                        <span class="star" data-value="2">★</span>
-                        <span class="star" data-value="3">★</span>
-                        <span class="star" data-value="4">★</span>
-                        <span class="star" data-value="5">★</span>
-                    </div>
-                    <button id="export-reviews" class="btn outline" style="margin-left:16px">Export Reviews CSV</button>
-                    <small class="muted">Download all reviews as CSV for your report.</small>
+                    <div id="avg-rating" class="avg-stars" aria-hidden="true">No ratings yet</div>
                 </div>
             </div>
 
             <div id="reviews-list" class="card"></div>
             <div class="reviews-pager" id="reviews-pager" style="display:none"></div>
+            <div class="card export-section"
+                style="display:flex;align-items:center;justify-content:center;margin-top:12px">
+                <button id="export-reviews" class="btn outline">Export Reviews CSV</button>
+            </div>
         </section>
     </main>
 

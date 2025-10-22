@@ -311,20 +311,29 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!reviewsList) return;
         if (list.length === 0) { reviewsList.innerHTML = '<p>No reviews yet — be the first to leave one!</p>'; avgRatingEl.textContent = 'No ratings yet'; reviewsPager.style.display = 'none'; return }
         const avg = computeAvg(list);
-        avgRatingEl.textContent = `${avg.toFixed(1)} / 5 (${list.length} reviews)`;
+        // show stars only: compute rounded average to nearest half-star display (we'll fill full stars)
+        const rounded = Math.round(avg);
+        const stars = Array.from({ length: 5 }, (_, i) => i < rounded ? '★' : '☆').join('');
+        avgRatingEl.innerHTML = `<span class="avg-count">${stars}</span> <span class="muted">${avg.toFixed(1)} / 5 (${list.length})</span>`;
 
         const totalPages = Math.ceil(list.length / REVIEWS_PER_PAGE);
         page = Math.min(Math.max(1, page), totalPages);
         const start = (page - 1) * REVIEWS_PER_PAGE;
         const slice = list.slice(start, start + REVIEWS_PER_PAGE);
 
-        reviewsList.innerHTML = slice.map(r => `
+        reviewsList.innerHTML = slice.map(r => {
+            // build star spans to inherit consistent CSS color
+            const stars = Array.from({ length: 5 }, (_, i) => `<span class="star ${i < r.rating ? 'selected' : ''}">★</span>`).join('');
+            // sanitize double-hyphen occurrences in user text
+            const safeText = escapeHtml((r.text || '').replace(/--/g, '—'));
+            return `
             <div class="review card">
-                <p><strong>${escapeHtml(r.name)}</strong> — ${'⭐'.repeat(r.rating)}</p>
-                <p>${escapeHtml(r.text)}</p>
+                <p><strong>${escapeHtml(r.name)}</strong> — ${stars}</p>
+                <p>${safeText}</p>
                 <small class="muted">${new Date(r.created).toLocaleString()}</small>
             </div>
-        `).join('');
+        `
+        }).join('');
 
         // pager
         if (totalPages <= 1) { reviewsPager.style.display = 'none'; return }
@@ -356,16 +365,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // interactive stars: clicking will set the rating select in the form
-    if (interactiveStars) {
-        interactiveStars.querySelectorAll('.star').forEach(s => {
+    function wireInteractiveStars(el) {
+        if (!el) return;
+        el.querySelectorAll('.star').forEach(s => {
+            s.style.cursor = 'pointer';
             s.addEventListener('click', function () {
                 const v = parseInt(this.dataset.value, 10);
-                document.getElementById('review-rating').value = v;
+                const sel = document.getElementById('review-rating');
+                if (sel) sel.value = v;
                 // update visuals
-                interactiveStars.querySelectorAll('.star').forEach(st => st.classList.toggle('selected', parseInt(st.dataset.value, 10) <= v));
+                el.querySelectorAll('.star').forEach(st => st.classList.toggle('selected', parseInt(st.dataset.value, 10) <= v));
+            });
+            s.addEventListener('mouseenter', function () {
+                const v = parseInt(this.dataset.value, 10);
+                el.querySelectorAll('.star').forEach(st => st.classList.toggle('hover', parseInt(st.dataset.value, 10) <= v));
+            });
+            s.addEventListener('mouseleave', function () {
+                el.querySelectorAll('.star').forEach(st => st.classList.remove('hover'));
             });
         });
     }
+    wireInteractiveStars(interactiveStars);
 
     renderReviews(1);
 

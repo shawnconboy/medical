@@ -215,8 +215,24 @@ select {
 }
 
 .star.selected {
-    color: gold;
+    color: #f5b301;
+    /* consistent yellow */
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2)
+}
+
+.star.hover {
+    color: #ffd66b;
+}
+
+.avg-stars .avg-count {
+    font-size: 20px;
+    color: #f5b301;
+    /* same yellow for overall */
+    letter-spacing: 2px;
+}
+
+.avg-stars .muted {
+    margin-left: 8px;
 }
 
 .reviews-summary {
