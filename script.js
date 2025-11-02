@@ -393,6 +393,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     wireInteractiveStars(interactiveStars);
 
+    // Keep dropdown and stars in sync: when dropdown changes, update star visuals
+    const ratingSelect = document.getElementById('review-rating');
+    if (ratingSelect) {
+        const syncStarsFromSelect = () => {
+            const v = parseInt(ratingSelect.value || '0', 10) || 0;
+            const starEls = document.querySelectorAll('#interactive-stars .star');
+            starEls.forEach(st => st.classList.toggle('selected', parseInt(st.dataset.value, 10) <= v));
+        };
+        ratingSelect.addEventListener('change', syncStarsFromSelect);
+        // Initial sync on load
+        syncStarsFromSelect();
+    }
+
     renderReviews(1);
 
     // FAQ accordion

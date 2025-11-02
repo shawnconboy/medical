@@ -10,11 +10,14 @@
 }
 
 body {
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    /* Apple-like system font stack for a clean, modern UI */
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", Roboto, Arial, system-ui;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     line-height: 1.5;
     color: #111;
     background: var(--bg);
-    margin: 0
+    margin: 0;
 }
 
 .container {
@@ -26,18 +29,32 @@ body {
 .site-header {
     background: linear-gradient(90deg, var(--accent), #0a8f6b);
     color: #fff;
-    padding: 18px 0
+    padding: 18px 0 12px;
+    box-shadow: 0 2px 8px rgba(2,6,23,0.06);
 }
 
 .site-header .container {
     display: flex;
     align-items: center;
-    gap: 16px
+    gap: 12px;
+    flex-wrap: wrap; /* allow the header to wrap but keep it compact */
 }
 
 .site-header h1 {
     margin: 0;
-    font-size: 20px
+    font-size: 20px;
+    flex: 0 0 auto;
+}
+
+.site-header .tag {
+    opacity: .9;
+    margin: 0;
+    font-size: 13px;
+    flex: 1 1 auto; /* allow tag to shrink so nav stays on same line */
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tag {
@@ -48,14 +65,26 @@ body {
 .main-nav {
     margin-left: auto;
     display: flex;
-    gap: 12px
+    gap: 10px;
+    flex-wrap: wrap; /* allow wrapping but limit rows via max-height */
+    align-items: center;
+    max-height: calc(2 * 1.6rem + 16px); /* roughly two lines of nav */
 }
 
 .main-nav a {
     color: #eafaf0;
     text-decoration: none;
-    padding: 6px 10px;
-    border-radius: 6px
+    padding: 6px 8px;
+    border-radius: 6px;
+    white-space: nowrap; /* keep each link intact when wrapping */
+    font-size: 14px;
+}
+
+@media (max-width:700px) {
+    .main-nav { gap: 8px; }
+    .main-nav a { font-size: 13px; padding: 6px 8px; }
+    /* hide the descriptive tag on small screens to avoid 3 rows */
+    .site-header .tag { display: none; }
 }
 
 .main-nav a.active {
@@ -70,8 +99,17 @@ body {
 }
 
 h2 {
-    margin-top: 0
+    margin-top: 0;
 }
+
+/* Tighter, cleaner headings for a medical UI */
+h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* Slightly lighter paragraph color for a softer, clinical look */
+p { color: #222; }
 
 .card {
     background: var(--card);

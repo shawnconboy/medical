@@ -12,8 +12,10 @@
     <header class="site-header">
         <div class="container">
             <h1>American Labs</h1>
+            <p class="tag">MedTrackⓇ — Lab tracking, scheduling & results</p>
             <nav class="main-nav">
                 <a href="index.html">Home</a>
+                <a href="medtrack.html">Tiers</a>
                 <a href="status.html">See Status Reports</a>
                 <a href="appointment.html" class="active">Request Appointment</a>
                 <a href="faq.html">FAQ</a>
@@ -29,25 +31,25 @@
 
             <form id="appointment-form" class="card">
                 <label for="name">Full name</label>
-                <input id="name" name="name" required>
+                <input id="name" name="name" required placeholder="e.g. Jamie Mosley">
                 <div class="field-error" id="err-name"></div>
 
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" required>
+                <input id="email" name="email" type="email" required placeholder="you@clinic.example">
                 <div class="field-error" id="err-email"></div>
 
                 <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel">
+                <input id="phone" name="phone" type="tel" placeholder="(555) 555-1212">
 
                 <label for="clinic">Clinic / Office</label>
-                <input id="clinic" name="clinic">
+                <input id="clinic" name="clinic" placeholder="Clinic or office name">
 
                 <label for="date">Preferred date</label>
-                <input id="date" name="date" type="date">
+                <input id="date" name="date" type="date" aria-label="Preferred date">
                 <div class="field-note">If no date is provided we'll contact you to schedule.</div>
 
                 <label for="notes">Notes</label>
-                <textarea id="notes" name="notes" rows="4"></textarea>
+                <textarea id="notes" name="notes" rows="4" placeholder="Any special instructions or availability"></textarea>
 
                 <button type="submit" class="btn">Submit Request</button>
             </form>
