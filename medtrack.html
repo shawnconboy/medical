@@ -9,12 +9,12 @@
 <body>
   <header class="site-header">
     <div class="container">
-      <h1>American Labs</h1>
-  <p class="tag">MedTrackⓇ — Lab tracking, scheduling &amp; results</p>
+    <h1>American Labs</h1>
+  <p class="tag">MedTrackⓇ: Lab tracking scheduling and results</p>
       <nav class="main-nav">
         <a href="index.html">Home</a>
         <a href="medtrack.html" class="active">Tiers</a>
-        <a href="status.html">See Status Reports</a>
+        <a href="status.html">Orders</a>
         <a href="appointment.html">Request Appointment</a>
         <a href="faq.html">FAQ</a>
         <a href="reviews.html">Leave a Review</a>
@@ -25,174 +25,85 @@
   <main class="container">
     <section class="card">
       <h2 class="sub">MedTrack® Upgrade</h2>
-      <p class="muted">Quick comparison — pick the right fit</p>
+  <div class="muted" style="margin-bottom:10px">Compare packages and pick the right fit.</div>
+  <p class="muted small">MedTrack offers tiered options. Start simple and scale as you need more automation and integrations.</p>
 
       <div class="medtrack-tiers modern" aria-labelledby="medtrack-title">
-        <h3 id="medtrack-title" class="sub" style="margin-top:0">Tiers at a glance</h3>
+        <div class="pricing-grid" role="list">
+          <article class="tier-card" role="listitem" aria-labelledby="tier-essential">
+            <header class="tier-header">
+              <h4 id="tier-essential">Essential</h4>
+              <div class="tier-sub muted">Barcode</div>
+            </header>
+            <div class="tier-body">
+              <ul class="features">
+                <li>Barcode generation and scanning for vials</li>
+                <li>Centralized database for tracking vial status</li>
+                <li>Basic web portal for clients to view test status</li>
+                <li>Manual data entry for test results</li>
+                <li>Schedule 2 to 3 months</li>
+              </ul>
+              <div class="meta small">
+                <strong>Best for:</strong> Small clinics
+              </div>
+            </div>
+            <footer class="tier-footer">
+              <div class="cost"><span class="muted">Cost</span> <strong>$</strong></div>
+            </footer>
+          </article>
 
-        <div id="medtrack-legend" class="muted" role="note">Legend: ✓ included • — not included • ~ partial</div>
+          <article class="tier-card recommended" role="listitem" aria-labelledby="tier-pro">
+            <header class="tier-header">
+              <h4 id="tier-pro">Pro</h4>
+              <div class="tier-sub muted">RFID + AI</div>
+            </header>
+            <div class="tier-body">
+              <p class="includes muted">Includes all Essential features</p>
+              <ul class="features">
+                <li>RFID tagging and scanning for real time vial tracking</li>
+                <li>AI based queue prediction and turnaround estimation</li>
+                <li>Automated result reporting</li>
+                <li>Integration with EMR HER systems such as Epic Cerner Cisco Athenahealth</li>
+                <li>Predictive analytics dashboard for clients</li>
+                <li>Schedule 6 to 9 months</li>
+              </ul>
+              <div class="meta small">
+                <strong>Best for:</strong> Mid-size labs
+              </div>
+            </div>
+            <footer class="tier-footer">
+              <div class="cost"><span class="muted">Cost</span> <strong>$$</strong></div>
+            </footer>
+          </article>
 
-        <div class="table-wrap">
-          <table id="medtrack-tiers-table" class="tiers" aria-describedby="medtrack-legend">
-            <caption class="sr-only">MedTrack tier comparison: Essential, Pro, Enterprise</caption>
-
-            <thead>
-              <tr>
-                <th scope="col" class="feature-col sr-only">Feature</th>
-                <th scope="col" class="tier-col center">
-                  <div class="sub">Essential</div>
-                  <div class="muted small">Barcode</div>
-                </th>
-                <th scope="col" class="tier-col center">
-                  <div class="sub">Pro</div>
-                  <div class="muted small">RFID + AI</div>
-                </th>
-                <th scope="col" class="tier-col center">
-                  <div class="sub">Enterprise</div>
-                  <div class="muted small">Cloud Platform</div>
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <th scope="row">Positioning</th>
-                <td class="center">Fast, low-cost</td>
-                <td class="center">Automation &amp; scale</td>
-                <td class="center">End-to-end platform</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Barcode</th>
-                <td class="center">✓</td>
-                <td class="center">✓</td>
-                <td class="center">✓</td>
-              </tr>
-
-              <tr>
-                <th scope="row">RFID</th>
-                <td class="center">—</td>
-                <td class="center">✓</td>
-                <td class="center">✓</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Real-time</th>
-                <td class="center">~</td>
-                <td class="center">✓</td>
-                <td class="center">✓</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Portal</th>
-                <td class="center">~</td>
-                <td class="center">✓</td>
-                <td class="center">✓</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Automated results</th>
-                <td class="center">—</td>
-                <td class="center">✓</td>
-                <td class="center">✓</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Notifications</th>
-                <td class="center">—</td>
-                <td class="center">✓</td>
-                <td class="center">✓</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Predictive</th>
-                <td class="center">—</td>
-                <td class="center">✓</td>
-                <td class="center">✓</td>
-              </tr>
-
-              <tr>
-                <th scope="row">EHR</th>
-                <td class="center">—</td>
-                <td class="center">✓</td>
-                <td class="center">✓</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Chatbot</th>
-                <td class="center">—</td>
-                <td class="center">—</td>
-                <td class="center">✓</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Complexity</th>
-                <td class="center">Low</td>
-                <td class="center">Med</td>
-                <td class="center">High</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Cost</th>
-                <td class="center">$</td>
-                <td class="center">$$</td>
-                <td class="center">$$$</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Impact</th>
-                <td class="center">Low</td>
-                <td class="center">Medium</td>
-                <td class="center">High</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Schedule</th>
-                <td class="center">2–3 mo</td>
-                <td class="center">6–9 mo</td>
-                <td class="center">9–12 mo</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Pros</th>
-                <td>
-                  <div class="small center">Quick start<br>Low cost</div>
-                </td>
-                <td>
-                  <div class="small center">Accurate tracking<br>Scales well</div>
-                </td>
-                <td>
-                  <div class="small center">Full visibility<br>Enterprise integrations</div>
-                </td>
-              </tr>
-
-              <tr>
-                <th scope="row">Cons</th>
-                <td>
-                  <div class="small center">Manual scans</div>
-                </td>
-                <td>
-                  <div class="small center">Hardware cost</div>
-                </td>
-                <td>
-                  <div class="small center">Higher cost<br>Longer deploy</div>
-                </td>
-              </tr>
-
-              <tr>
-                <th scope="row">Best for</th>
-                <td class="center">Small clinics</td>
-                <td class="center">Mid-size labs</td>
-                <td class="center">Large systems</td>
-              </tr>
-
-            </tbody>
-          </table>
+          <article class="tier-card" role="listitem" aria-labelledby="tier-enterprise">
+            <header class="tier-header">
+              <h4 id="tier-enterprise">Enterprise</h4>
+              <div class="tier-sub muted">Cloud Platform</div>
+            </header>
+            <div class="tier-body">
+                <p class="includes muted">Includes all Pro features</p>
+              <ul class="features">
+                <li>Cloud hosted system with mobile and desktop access</li>
+                <li>Chatbot for client inquiries</li>
+                <li>Barcode and RFID support</li>
+                <li>Automated result delivery and notifications</li>
+                <li>Full EMR HER integration</li>
+                <li>Advanced analytics and reporting</li>
+                <li>Schedule 9 to 12 months</li>
+              </ul>
+              <div class="meta small">
+                <strong>Best for:</strong> Large systems
+              </div>
+            </div>
+            <footer class="tier-footer">
+              <div class="cost"><span class="muted">Cost</span> <strong>$$$</strong></div>
+            </footer>
+          </article>
         </div>
       </div>
     </section>
-
-    <p style="margin-top:1rem"><a href="index.html">← Back to Home</a></p>
+    
   </main>
 
   <footer class="site-footer">
