@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FAQ — MedTrackⓇ</title>
+    <title>FAQ MedTrackⓇ</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -25,37 +25,71 @@
     </header>
 
     <main class="container">
-        <section>
-            <h2>Frequently Asked Questions</h2>
 
-            <div class="accordion">
-                <div style="display:flex;justify-content:flex-end;margin-bottom:8px">
-                    <button id="accordion-toggle" class="btn outline">Collapse All</button>
-                </div>
-                <button class="accordion-item">How do I check my test status?</button>
-                <div class="panel open">
-                    <p>Use the "See Status Reports" page and enter your Order ID or Barcode number. Results are updated
-                        as
-                        tests progress through each station.</p>
-                </div>
 
-                <button class="accordion-item">How long until results are ready?</button>
-                <div class="panel open">
-                    <p>Turnaround time depends on the test type. Routine blood chemistry may be same-day; specialized
-                        tests can take several days. Contact support for exact estimates.</p>
-                </div>
+        <section id="what" class="card">
+            <h3>What is MedTrack</h3>
+            <p>MedTrack is the office system that replaces manual paper steps in a medical testing facility. It brings
+                scheduling, tracking, and results into one secure portal so every step is simple and clear.</p>
+            <p>Think of it as your lab operations hub. It organizes orders, follows each vial through testing, and
+                delivers results to the right people.</p>
+        </section>
 
-                <button class="accordion-item">Can you send results to my EMR?</button>
-                <div class="panel open">
-                    <p>Yes — we support integrations with major EMR/EHR systems (Epic, Cerner, Athenahealth) upon
-                        request.</p>
-                </div>
+        <section id="who" class="card">
+            <h3>Who is it for</h3>
+            <ul>
+                <li><strong>Office staff</strong> use MedTrack to schedule patients, submit or view orders, and answer
+                    questions fast.</li>
+                <li><strong>Doctors</strong> can schedule patients, review order logs, and see results as soon as they
+                    are ready.</li>
+                <li><strong>Patients</strong> can check the status of their tests and view their full lab reports online
+                    when the office shares them.</li>
+            </ul>
+        </section>
 
-                <button class="accordion-item">Who should I contact for billing questions?</button>
-                <div class="panel open">
-                    <p>Please contact our billing department at billing@americanlabs.example.</p>
-                </div>
+        <section id="how" class="card">
+            <h3>How does it work</h3>
+            <ol>
+                <li>Schedule the patient in the portal or request a pickup through the appointment page.</li>
+                <li>Label vials and submit the order. Barcodes or tags are scanned at intake for accurate tracking.</li>
+                <li>Each station updates status in real time. Staff and doctors can see progress at a glance.</li>
+                <li>Results are posted to the portal and can flow into your EMR or EHR if you choose.</li>
+                <li>Patients can sign in to see their full report online and can leave a review of their experience.
+                </li>
+            </ol>
+            <p>For larger teams, MedTrack can grow with options like RFID tracking, AI powered queue estimates, and EMR
+                or EHR connections. See the <a href="medtrack.html">tiers</a> page for details.</p>
+        </section>
+
+        <section id="why" class="card">
+            <h3>Why is it needed</h3>
+            <p>Many labs still rely on handwritten notes and separate spreadsheets. That slows things down and leads to
+                errors. MedTrack gives you one clear source of truth.</p>
+            <ul>
+                <li>Faster scheduling and fewer phone calls</li>
+                <li>Accurate tracking from intake to final report</li>
+                <li>Fewer errors from lost notes or double entry</li>
+                <li>Simple access to results and full reports for staff, doctors, and patients</li>
+                <li>Easy reporting and export for audits and quality checks</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <div class="cta">
+                <a class="btn" href="status.html">Check a test status</a>
+                <a class="btn outline" href="appointment.html">Request an appointment</a>
+                <a class="btn outline" href="reviews.html">Leave a review</a>
             </div>
+        </section>
+
+        <section class="card">
+            <h3>Common tasks</h3>
+            <ul>
+                <li>To view orders and their stage open the Orders page</li>
+                <li>To request a pickup or appointment use the appointment page</li>
+                <li>To export orders or reviews use the export buttons on those pages</li>
+                <li>To see package options visit the tiers page</li>
+            </ul>
         </section>
     </main>
 
